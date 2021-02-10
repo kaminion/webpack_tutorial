@@ -96,3 +96,39 @@
 - 분리되어있는 파일을 청크라고 한다.
 - 런타임 때 사용되는 청크들을 런타임 청크라고 한다. (캐시가 적용되어 런타임시 더 빠르게 적용)
 - 벤더 청크파일(외부 패키지 파일들)
+
+# optimazation
+- 웹팩의 번들파일을 최적화 시켜주는 역할을 담당함
+- chunk 단위로 쪼개는 것도 최적화 시켜주는 것임
+
+# minification & Mangling
+- 주석제거, log 제거
+- 분기문 삼항연산자표현, 표현 난독화(uglyfi, mangling)
+- 압축 및 난독화는 사용자를 위한 최적화임
+
+# Development & Production Mode
+- 웹팩에서 빌드 시간이 소요되는 것을 방지하기 위해 설정파일을 따로 둘 수 있다.
+- 해당 내용은 npm i -D webpack-merge로 설치를 한 뒤
+- common과 dev, production 으로 웹팩을 나누어놨다
+- 스크립트에서 --config 옵션으로 실행 웹팩파일을 바꿀 수 있다.
+
+# define Plugin
+- 웹팩에 bulit-in 되어 있는 플러그인
+- 모듈들이 상수값을 활용할 수 있게 해줌
+
+# 윈도우 npm 스크립트
+- 맥이었다면 NODE_ENV=DEVELOPMENT webpack --conf... 이었을 것
+~~~js
+  "scripts": {
+    "dev": "SET NODE_ENV=DEVELOPMENT & webpack --config webpack.dev.js",
+    "build": "SET NODE_ENV=PRODUCTION & webpack --config webpack.prod.js"
+  },
+~~~
+
+# 개발환경
+- webpack-dev-server (웹팩 개발서버)
+- 직접실행시킬 수 있음 (./node_modules/.bin/webpack-dev-server), config 플래그로 웹팩 지정시켜줘야함. (perceptive, 관점)
+- webpack 4버전 이상은 webpack serve 옵션으로 실행가능
+- 결과물이 메모리상에 있음
+- 파일 프로토콜이 아님
+- 라이브 리로딩 방식임

@@ -46,4 +46,4 @@
 - 코드의 관리가 편해진다.
 - 코드를 모듈화하는 기준이 명확해야한다.
 
-웹팩에 관한건 webpack.md 참조
+(**웹팩에 관한건 webpack.md 참조**)[https://github.com/kaminion/webpack_tutorial/blob/master/webpack.md]

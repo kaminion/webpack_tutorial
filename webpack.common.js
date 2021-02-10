@@ -7,9 +7,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-// 웹팩 의존성에 terser 모듈이 있다. js 컴프레서, minimize true여야함
-const TerserWebpackPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack')
+
+const isProduction = process.env.NODE_ENV === "PRODUCTION";
 
 module.exports =
 {
@@ -54,38 +54,16 @@ module.exports =
             meta:{
                 viewport:"width=device-width, initial-scale=1.0"
             },
-            minify:{
+            minify: isProduction ? {
                 collapseWhitespace: true,
                 removeScriptTypeAttributes: true,
                 useShortDoctype: true
-            }
+            } : false
         }),
         new CleanWebpackPlugin(),
-        // css nano를 이용한 plugin
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'),
-            cssProcessorPluginOptions:{
-                preset: ['default', { discardComments: { removeAll: true} }]
-            },
-            canPrint:true
+        new webpack.DefinePlugin({
+            IS_PRODUCTION: isProduction // 값 정의 가능
         })
     ],
-    optimization:{
-        runtimeChunk:{
-            name:'runtime'
-        },
-        splitChunks:{
-            cacheGroups:{
-                commons:{
-                    test:/[\\/]node_modules[\\/]/,
-                    name:'venders',
-                    chunks:'all'
-                }
-            }
-        },
-        minimize:true, // Terser 생략가능, 적어주면 옵션 커스터마이징 가능
-        minimizer:[new TerserWebpackPlugin()] // Terser의 옵션 커스터마이징 가능함
-    },
     target:'web'
 }
