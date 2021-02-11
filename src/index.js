@@ -2,10 +2,17 @@ import 'normalize.css';
 import styles from './index.css';
 import $ from 'jquery';
 
+import charImg from '../images/daniel.jpg';
+
 function component()
 {
     const element = document.createElement('div');
     element.innerHTML = "Hello Webpack1";
+
+    const imgElement = document.createElement('img');
+    imgElement.src = charImg;
+
+    element.appendChild(imgElement);
 
     console.log(styles);
 

@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "SET NODE_ENV=DEVELOPMENT & webpack serve --config webpack.dev.js",
-    "dev": "SET NODE_ENV=DEVELOPMENT & webpack --config webpack.dev.js",
-    "build": "SET NODE_ENV=PRODUCTION & webpack --config webpack.prod.js"
+    "start": "SET NODE_ENV=DEVELOPMENT& webpack serve --config webpack.dev.js",
+    "dev": "SET NODE_ENV=DEVELOPMENT& webpack --config webpack.dev.js",
+    "build": "SET NODE_ENV=PRODUCTION& webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.2",
     "cssnano": "^4.1.10",
+    "file-loader": "^6.2.0",
     "handlebars": "^4.7.6",
     "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^5.0.0",

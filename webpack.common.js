@@ -42,6 +42,23 @@ module.exports =
         },{
             test:/\.hbs$/,
             use:['handlebars-loader']
+        },
+        {
+            test:/\.(png|jpe?g|gif)$/i,
+            use:[{
+                loader: 'file-loader',
+                options:{
+                    // name: '[contenthash].ext', // ext는 확장자의 약자. extension
+                    name(resourcePath, resourceQuery){
+                        if(isProduction){
+                            return '[contenthash].[ext]';
+                        }
+                        return '[path][name].[ext]';
+                    },
+                    publicPath:'assets/', // img src URL에 관여함
+                    outputPath:'assets/' // 빌드 시 내보낼 디렉터리 
+                }
+            }]
         }]
     },
     plugins:[
