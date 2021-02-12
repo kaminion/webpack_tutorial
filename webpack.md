@@ -162,3 +162,8 @@
 - prefix 자동으로 붙여줌 (-moz -webkit 등, auto prefixer라고 함 plugin)
 - 하위 브라우저에서 사용 가능하게 vender prefix를 적용함 (위의 내용과 동일)
 - 이러한 내용의 플러그인들은 대부분 본 모듈과 loader를 따로따로 설치해야함
+- autoprefixer는 package.json에서 browserlist를 설정해주지않으면 적용이 되지않는다.
+
+# stylelint
+- 코딩 규칙과도 같은 사소한 부분들을 제어해주는 도구(lint)
+- stylelint stylelint-scss stylelint-webpack-plugin stylelint-config-standard

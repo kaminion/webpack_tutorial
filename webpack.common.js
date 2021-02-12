@@ -21,7 +21,6 @@ const postcssLoader =
 
 }
 
-
 const isProduction = process.env.NODE_ENV === "PRODUCTION";
 
 module.exports =
@@ -42,17 +41,17 @@ module.exports =
                 {
                     test:/\.module\.s?css$/,
                     use:[
-                        {
-                            loader:MiniCssExtractPlugin.loader
-                        },
+                        MiniCssExtractPlugin.loader,
                         {
                             loader:'css-loader',
                             options:{
-                                modules:true // module 파일만 모듈로 적용되게 option
+                                modules:true, // module 파일만 모듈로 적용되게 option
                             }
                         },
                         postcssLoader,
-                        'sass-loader' // 인덱스 가장 큰 순서대로 sass-loader -> css-loader -> mini .. 체이닝 될 것 마지막 순서부터 작동하므로 유의할 것
+                        {
+                            loader:'sass-loader'
+                        } // 인덱스 가장 큰 순서대로 sass-loader -> css-loader -> mini .. 체이닝 될 것 마지막 순서부터 작동하므로 유의할 것
                     ]
                 },
                 {

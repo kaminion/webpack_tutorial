@@ -1,5 +1,7 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+// lint는 개발 환경에서만 사용되므로
 
 const config = {
     mode:'development',
@@ -13,7 +15,10 @@ const config = {
             ]
         }, // 라우팅과 관련된 키, 제공하지 않는 라우팅으로 접근하면 예외처리, 특정한 곳으로 이동처리 가능
         port:3333
-    }
+    },
+    plugins:[
+        new StyleLintPlugin()
+    ]
 };
 
 
