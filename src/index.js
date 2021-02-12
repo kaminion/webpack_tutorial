@@ -1,20 +1,28 @@
 import 'normalize.css';
-import styles from './index.css';
+import globalCss from './global.scss';
+import styles from './index.module.scss';
 import $ from 'jquery';
 
 import charImg from '../images/daniel.jpg';
+import nestjsSvg from '../images/nestjs.svg';
 
 function component()
 {
     const element = document.createElement('div');
     element.innerHTML = "Hello Webpack1";
 
-    const imgElement = document.createElement('img');
-    imgElement.src = charImg;
+    // const imgElement = document.createElement('img');
+    // imgElement.src = charImg;
+    // imgElement.classList = styles.img;
 
-    element.appendChild(imgElement);
+    const svgElement = document.createElement('img');
+    svgElement.src = nestjsSvg;
+    svgElement.classList = styles.img;
 
-    console.log(styles);
+    // element.appendChild(imgElement);
+    element.appendChild(svgElement);
+
+    // console.log(styles);
 
     element.classList = styles.helloWebpack;
 
@@ -22,5 +30,5 @@ function component()
 }
 
 document.body.appendChild(component());
-console.log(`${(styles.helloWebpack).length}`);
+// console.log(`${(styles.helloWebpack).length}`);
 console.log(`IS_PRODUCTION MODE : ${IS_PRODUCTION} Value`);

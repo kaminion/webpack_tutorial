@@ -20,25 +20,58 @@ module.exports =
     },
     mode:"none", // production 일 경우 압축, 직접 리소스 최적화설정도 가능
     module:{
-        rules:[{
-            test:/\.css$/i,
-            use:[
-                // {
-                //     loader:'style-loader',
-                //     options:{
-                //         injectType:'singletonStyleTag'
-                //     }
-                // }, 외부 빠지는거 때문에 여기 위치
+        rules:[
+                // filename.module.scss => css modules,
+                // filename.scss => global
+            {
+            test:/\.s?css$/,
+            oneOf:[ // 여러룰 중 하나가 작동되도록 조건 oneOf 외부 조건말고 또 추가
                 {
-                    loader:MiniCssExtractPlugin.loader
+                    test:/\.module\.s?css$/,
+                    use:[
+                        {
+                            loader:MiniCssExtractPlugin.loader
+                        },
+                        {
+                            loader:'css-loader',
+                            options:{
+                                modules:true // module 파일만 모듈로 적용되게 option
+                            }
+                        },
+                        'sass-loader' // 인덱스 가장 큰 순서대로 sass-loader -> css-loader -> mini .. 체이닝 될 것 마지막 순서부터 작동하므로 유의할 것
+                    ]
                 },
                 {
-                    loader:'css-loader',
-                    options:{
-                        modules:true
-                    }
+                    use:[ // global css
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader:'css-loader',
+                            options:{
+                                modules:true
+                            }
+                        },
+                        'sass-loader'
+                    ]
                 }
-            ]
+
+            ],
+            // use:[
+            //     // {
+            //     //     loader:'style-loader',
+            //     //     options:{
+            //     //         injectType:'singletonStyleTag'
+            //     //     }
+            //     // }, 외부 빠지는거 때문에 여기 위치
+            //     {
+            //         loader:MiniCssExtractPlugin.loader
+            //     },
+            //     {
+            //         loader:'css-loader',
+            //         options:{
+            //             modules:true
+            //         }
+            //     }
+            // ]
         },{
             test:/\.hbs$/,
             use:['handlebars-loader']
@@ -57,6 +90,15 @@ module.exports =
                     },
                     publicPath:'assets/', // img src URL에 관여함
                     outputPath:'assets/' // 빌드 시 내보낼 디렉터리 
+                }
+            }]
+        },
+        {
+            test:/\.svg$/i,
+            use:[{
+                loader: 'url-loader',
+                options:{
+                    limit:8192 // byte 크기 단위의 제한 (8kb), 용량 초과시 일반 path 적용
                 }
             }]
         }]

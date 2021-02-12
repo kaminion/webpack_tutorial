@@ -1,0 +1,28 @@
+$bg-color:#232c34;
+$font-color: green;
+
+body{
+    background-color: $bg-color;
+    text-align: center;
+}
+
+div{
+    color:red;
+}
+
+.helloWebpack{
+    display: flex;
+    color:$font-color;
+    align-items: center;
+    height:100vh;
+    font-size: 20px;
+    justify-content: center;
+}
+
+.img
+{
+    width:100px;
+    height:100px;
+    position: absolute;
+    margin-top: -80px;
+}

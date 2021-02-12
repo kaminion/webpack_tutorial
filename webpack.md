@@ -73,8 +73,13 @@
 - jpg, png 
 - 기타 등등
 
+# CleanWebpackPlugin
+- 이전 빌드 결과물 제거 플러그인
+
 # css
 - normalize.css(다르게 적용되는 스타일만 같게) 또는 reset.css(대부분 제거)
+- css를 파일별로 모듈로 사용하여 불러오는 것 MiniCssExtractPlugin,  (style-inline은 style-loader)
+- 최적화 모듈은 OptimizeCssAssetsPlugin
 
 # handlebars(hbs)
 - 컴파일러이므로 dev depenedency
@@ -138,3 +143,16 @@
 - 이미지와 같은 정적 리소스파일들도 모듈로 다룸
 - 파일로더와 URL 로더 
 - 파일로더는 import 또는 require 키워드를 통해 사용하는 파일들을 output 디렉터리 폴더로 파일을 카피해오는 로더임.
+
+# URL-loader
+- 문자열 형태로 리소스 표현 (inline 형태로)
+- 파일을 입력받고 Data uris 라는 특이한 객체로 반환하게 됨
+- data:mediatype;base64,data (base64는 이진수값을 텍스트로 인코딩)
+- 리소스 요청 수를 줄일 수 있음 (문자열 형태이므로), 작은 이미지에만 사용 권장
+- 크기 제한 넘어갈 경우, fallback 옵션으로 다른 로더가 적용되게 할 수 있다.
+
+# SASS (SCSS) 확장자가 두개
+- ; {} 표현하느냐 마냐에 따라 확장자(sass | scss)가 갈림
+- node 환경에서 읽어들이는 node-sass, sass loader 필요
+- sass-loader 작동 -> css로 컴파일 후 css 로더가 받아 처리(chaining) 
+
