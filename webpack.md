@@ -156,3 +156,9 @@
 - node 환경에서 읽어들이는 node-sass, sass loader 필요
 - sass-loader 작동 -> css로 컴파일 후 css 로더가 받아 처리(chaining) 
 
+# POST CSS
+- CSS 를 위해 사용하는 플러그인
+- 자바스크립트 플러그인 적용하여 CSS를 변형시키는 역할을 함 (CSS 에도 플러그인 적용 )
+- prefix 자동으로 붙여줌 (-moz -webkit 등, auto prefixer라고 함 plugin)
+- 하위 브라우저에서 사용 가능하게 vender prefix를 적용함 (위의 내용과 동일)
+- 이러한 내용의 플러그인들은 대부분 본 모듈과 loader를 따로따로 설치해야함

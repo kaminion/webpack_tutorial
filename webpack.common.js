@@ -7,7 +7,20 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack')
+const webpack = require('webpack');
+
+// postcss-loader 문서 참조. 강의 내용과 좀 다름
+const postcssLoader = 
+{
+    loader:'postcss-loader',
+    options:{
+        postcssOptions:{
+            config: path.resolve(__dirname, 'postcss.config.js')
+        }
+    }
+
+}
+
 
 const isProduction = process.env.NODE_ENV === "PRODUCTION";
 
@@ -38,6 +51,7 @@ module.exports =
                                 modules:true // module 파일만 모듈로 적용되게 option
                             }
                         },
+                        postcssLoader,
                         'sass-loader' // 인덱스 가장 큰 순서대로 sass-loader -> css-loader -> mini .. 체이닝 될 것 마지막 순서부터 작동하므로 유의할 것
                     ]
                 },
@@ -50,6 +64,7 @@ module.exports =
                                 modules:true
                             }
                         },
+                        postcssLoader,
                         'sass-loader'
                     ]
                 }
