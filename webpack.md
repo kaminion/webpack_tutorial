@@ -167,3 +167,14 @@
 # stylelint
 - 코딩 규칙과도 같은 사소한 부분들을 제어해주는 도구(lint)
 - stylelint stylelint-scss stylelint-webpack-plugin stylelint-config-standard
+- 개발 환경시에만 적용(plugin)
+
+# babel
+- css autoprefixer처럼 js에서 하위 브라우저 호환하기 위한 플러그인
+- 바벨 역시 컴파일 하기 때문에 cli 등 필요한 모듈이 많다.
+- cli는 실행하기 위한 환경에 불과
+- 코어가 있어야 자바스크립트 파일을 입력받아 변환시킴 (변환을 시킬때만 사용)
+- @babel/cli @babel/core @babel/preset-env
+- 웹팩에서 사용될 수 있게 babel-loader도 사용
+- 제공되는건 보통 minification과 transfiling이 제공되기 때문에 범위 제외
+- polyfill - ES5 문법으로 대응 할 수 있게 지원해주는 모듈 (하위 브라우저들에게 지원될 수 있게 제공)

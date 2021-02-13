@@ -115,7 +115,16 @@ module.exports =
                     limit:8192 // byte 크기 단위의 제한 (8kb), 용량 초과시 일반 path 적용
                 }
             }]
-        }]
+        },
+        {
+            test:/\.js$/,
+            exclude:/node_modules/,
+            use:{
+                loader:"babel-loader"
+            }
+
+        }
+        ]
     },
     plugins:[
         new MiniCssExtractPlugin({

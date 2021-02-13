@@ -5,6 +5,7 @@ import $ from 'jquery';
 
 import charImg from '../images/daniel.jpg';
 import nestjsSvg from '../images/nestjs.svg';
+import '@babel/polyfill';
 
 function component()
 {
@@ -23,7 +24,7 @@ function component()
     element.appendChild(svgElement);
 
     // console.log(styles);
-
+    //
     element.classList = styles.helloWebpack;
 
     return element;
