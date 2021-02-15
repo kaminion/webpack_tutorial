@@ -79,6 +79,7 @@
 # css
 - normalize.css(다르게 적용되는 스타일만 같게) 또는 reset.css(대부분 제거)
 - css를 파일별로 모듈로 사용하여 불러오는 것 MiniCssExtractPlugin,  (style-inline은 style-loader)
+- css-loader에서 모듈옵션은 js 모듈로 사용 여부를 나타낸다.
 - 최적화 모듈은 OptimizeCssAssetsPlugin
 
 # handlebars(hbs)

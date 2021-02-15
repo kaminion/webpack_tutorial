@@ -1,5 +1,6 @@
 import 'normalize.css';
 import globalCss from './global.scss';
+import "./global.scss";
 import styles from './index.module.scss';
 import $ from 'jquery';
 
@@ -25,7 +26,7 @@ function component()
 
     // console.log(styles);
     //
-    element.classList = styles.helloWebpack;
+    element.classList = [styles.helloWebpack, 'test'].join(' ');
 
     return element;
 }
