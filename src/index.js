@@ -1,6 +1,8 @@
 import 'normalize.css';
-import globalCss from './global.scss';
+
+// global css의 경우엔 module false 값이므로 모듈로 사용할 수 없다.
 import "./global.scss";
+// .module 파일의 경우 웹팩에서 module true 값을 주어 모듈로 불러오기가 가능하다. (className에 해시값 적용)
 import styles from './index.module.scss';
 import $ from 'jquery';
 
